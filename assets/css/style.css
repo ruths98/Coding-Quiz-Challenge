@@ -1,0 +1,22 @@
+body {
+    display:flex;
+    justify-content:center;
+    background-color: pink;
+}
+
+div .question {
+    display:inline;
+    justify-content: center;
+    background-color:rgb(219, 143, 156);
+}
+
+#timer {
+    display: inline;
+    justify-self: end;
+}
+
+#highScore {
+    display:inline;
+    justify-self:start;
+    color:rgb(255, 147, 195); /*first bug: how to make the color actually change.*/
+}
