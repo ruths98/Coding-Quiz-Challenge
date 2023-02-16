@@ -1,22 +1,74 @@
 body {
-    display:flex;
-    justify-content:center;
     background-color: pink;
+    display:grid;
 }
 
-div .question {
+.quizbtn {
+    font-size: 1.5rem;
+    background-color:white;
+    color: rgb(240, 161, 175);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    justify-self: center;
+}
+
+.quizbtn:hover {
+    background-color:rgb(245, 202, 210);
+    color:white;
+}
+.prompts {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
+}
+
+.question {
     display:inline;
-    justify-content: center;
-    background-color:rgb(219, 143, 156);
+    background-color:rgb(249, 174, 187);
+    color:rgb(255, 255, 255);
+    position: absolute;
+    width:60%;
+    height:60%;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 2.5vw; /*viewport Units*/
+    border-radius: 15px;
+    border: solid 2px white;
+}
+
+.question>ul {
+    padding-inline-start:0em;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-end;
+    gap:5%;
+}
+
+.question>ul>li {
+background-color: pink;
+border-radius: 15px;
+border: solid 2px white;
+margin-top: 5px;
+margin-bottom:5px;
+padding-left:5px;
+list-style:none;
+}
+
+.question>ul>li:hover {
+    background-color:rgb(229, 162, 174);
+    color:white;
 }
 
 #timer {
     display: inline;
     justify-self: end;
+    position:relative;
+    top: -32px;
 }
 
 #highScore {
     display:inline;
     justify-self:start;
-    color:rgb(255, 147, 195); /*first bug: how to make the color actually change.*/
+    color:rgb(176, 25, 93); /*first bug: how to make the color actually change.*/
 }

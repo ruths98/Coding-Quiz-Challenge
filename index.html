@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style rel="stylesheet" href="assets/css/style.css"></style>
-    <style rel="stylesheet" href="assets/css/reset.css"></style>
+   <link rel="stylesheet" href="/assets/css/reset.css"></link> 
+   <link rel="stylesheet" href="assets/css/style.css"></link>
+    
 
     <title>Quick Code Quiz</title>
 </head>
 <body>  
     <div id="highScore">View High Scores</div>
     <p id=timer></p>
+    <section class="prompts">
     <div class="question" class="instructions">
         <h1>Coding Quiz Challenge</h1>
-        <p>Press 'Start Quiz' to test your coding knowledge!<br></br> 
-        You will have 75 seconds to complete the quiz and each wrong answer deducts 10 seconds.<br></br>
+        <p>Press 'Start Quiz' to test your coding knowledge!
+        You will have 75 seconds to complete the quiz and each wrong answer deducts 10 seconds.
     Best of luck!</p>
-    <button type="button">Let's Get Started!</button>
+    <button type="button" class="quizbtn">Let's Get Started!</button>
     </div>
-    <div class="question" class="1">
+     <!-- <div class="question" class="1">
         <h2>Question 1</h2>
         <p>question text</p>
         <ul>
@@ -68,8 +70,8 @@
             <li class="incorrect">option c</li>
             <li class="incorrect">option d</li>
         </ul>
-    </div>
-    
+    </div>  -->
+    </section>
 <!--Try adding the homepage text and one question and see if you can get them to show one at a time. We can
 do all questions this way. Like layering and they pop up on top of eachother, or are hidden when not active.
 To do this we can change the data-state(?) to hidden vs visible. 
