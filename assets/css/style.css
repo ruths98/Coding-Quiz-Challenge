@@ -60,11 +60,17 @@ list-style:none;
     color:white;
 }
 
-#timer {
+.score {
+    display:none;
+    /*hide until startGame fires*/
+}
+
+.timer {
     display: inline;
     justify-self: end;
     position:relative;
     top: -32px;
+    color:white;
 }
 
 #highScore {
