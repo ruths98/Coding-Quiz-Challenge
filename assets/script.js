@@ -6,7 +6,7 @@ function startTimer() {
     let timerInterval = setInterval(function () {
         timeRemaining--;
         timer.textContent = "Seconds Remaining " + timeRemaining;
-        if(timeRemaining === 0) {
+        if (timeRemaining === 0) {
             clearInterval(timerInterval);
         }
         // if (!quizAnswer) {
@@ -25,51 +25,47 @@ function startTimer() {
 
 startTimer();
 
+let question = {
+    title: 'Question',
+    alternatives: ['a', 'b', 'c', 'd'],
+    correctAnswer: 1 //whichever one is actually correct. could also store the word as the right answer
+};
+
+function showQuestion(q) {//the parameter 'q' is the question we will pass through the function
+    //select dom element in a variable
+    let titleH3 = document.getElementById('title');
+    //modify it
+    titleH3.textContent = q.title; //q.title replaces question.title
+    let alts = document.querySelectorAll('.alternative')
+    console.log(alts); //this is to see if the right elements have been selected.
+    alts.forEach(function(element,index){//the parameters are element and index
+element.textContent=q.alternatives[index];//element is q, textcontent is the alternatives index. Still dont understand how q is now read as question.
+   
+        element.addEventListener('click', function() {
+            //check correct answer
+            if(q.correctAnswer == index){
+                console.log('correct Answer!')
+            }
+            else {
+                console.log('wrong answer!');
+            }
+        });
+});
+}
+
+showQuestion(question);
 
 // let leaderboard = document.getElementById("#highScore");
-
-// let question = document.querySelector(".question"); // is this the right way to make them an array?
-// document.querySelector(".question") = [".introduction", ".one", ".two", ".three", ".four", ".five"];
-// let correct = document.querySelector(".correct");
-// let incorrect = document.querySelector(".incorrect");
 // let quizbtn = document.querySelector(".quizbtn");
 // let score = document.querySelector(".score");
 // //score= checkAnswer ++
 
 // function startQuiz() {
-//     score.style.visibility = 'block';
-//     //but then i have to make functions to show the array items and if else statements for whether they are right or not which affects score and timer.
-//     function firstQuestion() {
-//         question[1].style.visibility = 'visible';
-//         question[0, 2, 3, 4, 5].style.visibility = 'hidden';
 //         question[0].addEventListener("click",question[2])//to continue on to question 2. Does this go to the bottom?
 //     }
-//     function secondQuestion() {
-//         question[1].style.visibility = 'visible';
-//         question[0, 2, 3, 4, 5].style.visibility = 'hidden';
+//     function secondQuestion() 
 //         if ("click") {//keydown event
-//             thirdQuestion; 
-//         }
-//     }
-//     function thirdQuestion() {
-//         question[1].style.visibility = 'visible';
-//         question[0, 2, 3, 4, 5].style.visibility = 'hidden';
-//         if ("click") {
-//             fourthQuestion; //keydown event
-//         }
-//     }
-//     function fourthQuestion() {
-//         question[1].style.visibility = 'visible';
-//         question[0, 2, 3, 4, 5].style.visibility = 'hidden';
-//         if ("click") {//keydown event
-//             fifthQuestion;
-//         }
-//     }
-//     function fifthQuestion() {
-//         question[1].style.visibility = 'visible';
-//         question[0, 2, 3, 4, 5].style.visibility = 'hidden';
-//         if ("click") {
-//         //keydown event?
+//             thirdQuestion; and so on and so forth
 //         }
 //     }
 

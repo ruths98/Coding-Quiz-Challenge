@@ -23,7 +23,7 @@ body {
     
 }
 
-.question {
+.questionStyle {
     display:inline;
     background-color:rgb(249, 174, 187);
     color:rgb(255, 255, 255);
@@ -37,7 +37,7 @@ body {
     border: solid 2px white;
 }
 
-.question>ul {
+.questionStyle>ul {
     padding-inline-start:0em;
     display:flex;
     flex-direction:column;
@@ -45,7 +45,7 @@ body {
     gap:5%;
 }
 
-.question>ul>li {
+.questionStyle>ul>li {
 background-color: pink;
 border-radius: 15px;
 border: solid 2px white;
@@ -55,7 +55,7 @@ padding-left:5px;
 list-style:none;
 }
 
-.question>ul>li:hover {
+.questionStyle>ul>li:hover {
     background-color:rgb(229, 162, 174);
     color:white;
 }
