@@ -1,7 +1,24 @@
 let timer = document.querySelector(".timer");
 let timeRemaining = 75;
+let leaderboard = document.getElementById("highScore");
+let prompts = document.querySelector(".prompts");
+let quizbtn = document.querySelector(".quizbtn");
+let score = document.querySelector(".score");
+let scoreBoard = document.getElementById("scoreBoard");
+let q1 = document.getElementById("q1")//getElementById does not work with '#' because it is implied.
+score.textContent = 0;
 
-//trigger this function with an event listener (begin.on("click",startTimer))
+quizbtn.addEventListener("click",startQuiz); //when adding an EventListener no parenthesis after the function.
+
+function startQuiz() {//trigger this function with an event listener quizbtn.addEventListener("click", startQuiz)
+ console.log("here");
+ startTimer();
+    if (q1.style.visibility =='hidden') {  
+    q1.style.visibility = 'visible';
+     
+ }
+}
+
 function startTimer() {
     let timerInterval = setInterval(function () {
         timeRemaining--;
@@ -23,8 +40,6 @@ function startTimer() {
     }, 1000);
 }
 
-startTimer();
-
 let question = {
     title: 'Question',
     alternatives: ['a', 'b', 'c', 'd'],
@@ -44,58 +59,32 @@ element.textContent=q.alternatives[index];//element is q, textcontent is the alt
         element.addEventListener('click', function() {
             //check correct answer
             if(q.correctAnswer == index){
-                console.log('correct Answer!')
+                console.log('correct Answer!');
+                // displayMessage('You got it!');
+                score.visibility = 'visible';
+                score = 'score: '+score.textContent++;
             }
             else {
                 console.log('wrong answer!');
+                // displayMessage('Nope!');
+                score = 'score: '+score.textContent;
             }
         });
 });
 }
 
-showQuestion(question);
-
-// let leaderboard = document.getElementById("#highScore");
-// let quizbtn = document.querySelector(".quizbtn");
-// let score = document.querySelector(".score");
-// //score= checkAnswer ++
-
-// function startQuiz() {
-//         question[0].addEventListener("click",question[2])//to continue on to question 2. Does this go to the bottom?
-//     }
-//     function secondQuestion() 
-//         if ("click") {//keydown event
-//             thirdQuestion; and so on and so forth
-//         }
-//     }
-
-
-//     //do i need separate functions for each question?
-//     //set all array items 1-5[0-4](whatever the last number is) to 'hidden'
-//     // if (question[0] state=visible) {
-//     //change this state to hidden and the others to visible. maybe make a loop that shows one array item at a time. 
-//     //also i think set all array items to absolute positioning and put them in the same spot with white backgrounds.
-//     //if we do this ^^ we may not even need to hide the items, but bring the next one to the front.
-//     //another option is DOM manipulation??? When triggered the text changes and the classes of 'correct' and 'incorrect' change too.
-//     // }
-// }
-
-// function checkAnswer() {
-//     if (correct.target = true)
-//         displayMessage("correct!")
-
-//     if (incorrect.target = true)
-//         displayMessage("nope!")
-//     //if clicked element = correct answer {score=score++} also text shows briefly saying 'correct!'
-//     //if !clicked element {no points added, brief text shows saying 'incorrect!'}
-// }
-
-
-
-// function showLeaderboard() {
-//     //shows a list of the saved data for high scores
-// };
-// // quizbtn.addEventListener("click",startQuiz());
-// quizbtn.addEventListener("click", startTimer());
-// //add an event listener to check the answers to the quiz. answerbtn.addEventListener("click",checkAnswer) can checkAnswer also trigger the next set of questions?
-// leaderboard.addEventListener("click", showLeaderboard());
+showQuestion(question);//shows a list of the saved data for high scores
+function showLeaderboard() {
+    if (scoreBoard.style.visibility == 'hidden') {
+        scoreBoard.style.visibility = 'visible';
+        console.log('high scores here!');
+    }
+    if (prompts.style.visibility == 'visible'){
+        prompts.style.visibility = 'hidden';
+    }
+   
+} 
+    //triggers showLeaderboard function (above)
+leaderboard.addEventListener("click", showLeaderboard);
+//event listener to target ID confirm name button
+//amend elemtents to have locally saved username and score

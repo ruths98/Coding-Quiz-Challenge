@@ -1,11 +1,11 @@
 body {
     background-color: pink;
-    display:grid;
+    display: grid;
 }
 
 .quizbtn {
     font-size: 1.5rem;
-    background-color:white;
+    background-color: white;
     color: rgb(240, 161, 175);
     border: 2px solid rgb(255, 255, 255);
     border-radius: 30px;
@@ -13,68 +13,108 @@ body {
 }
 
 .quizbtn:hover {
-    background-color:rgb(245, 202, 210);
-    color:white;
+    background-color: rgb(245, 202, 210);
+    color: white;
 }
+
 .prompts {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.q1 {
+    display: inline;
+    background-color: rgb(249, 174, 187);
+    color: rgb(255, 255, 255);
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 2.5vw;
+    /*viewport Units*/
+    border-radius: 15px;
+    border: solid 2px white;
 }
 
 .questionStyle {
-    display:inline;
-    background-color:rgb(249, 174, 187);
-    color:rgb(255, 255, 255);
+    display: inline;
+    background-color: rgb(249, 174, 187);
+    color: rgb(255, 255, 255);
     position: absolute;
-    width:60%;
-    height:60%;
+    width: 60%;
+    height: 60%;
     padding: 20px;
     margin-top: 50px;
-    font-size: 2.5vw; /*viewport Units*/
+    font-size: 2.5vw;
+    /*viewport Units*/
     border-radius: 15px;
     border: solid 2px white;
 }
 
 .questionStyle>ul {
-    padding-inline-start:0em;
-    display:flex;
-    flex-direction:column;
+    padding-inline-start: 0em;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    gap:5%;
+    gap: 5%;
 }
 
 .questionStyle>ul>li {
-background-color: pink;
-border-radius: 15px;
-border: solid 2px white;
-margin-top: 5px;
-margin-bottom:5px;
-padding-left:5px;
-list-style:none;
+    background-color: pink;
+    border-radius: 15px;
+    border: solid 2px white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    list-style: none;
 }
 
 .questionStyle>ul>li:hover {
-    background-color:rgb(229, 162, 174);
-    color:white;
-}
-
-.score {
-    display:none;
-    /*hide until startGame fires*/
+    background-color: rgb(229, 162, 174);
+    color: white;
 }
 
 .timer {
     display: inline;
     justify-self: end;
+    position: absolute;
+    top:-10px;
+    color: white;
+}
+
+.score {
+    /*view high scores button*/
+    position: relative;
+
+}
+
+#scoreBoard {
+    /*actual pop up for username input*/
+    justify-self: center;
     position:relative;
-    top: -32px;
-    color:white;
+    top:100px;
+    background-color:rgb(255, 151, 165);
+    padding: 10px;
+    width:35%;
+    text-align:center;
+    border-radius: 30px;
 }
 
 #highScore {
-    display:inline;
-    justify-self:start;
-    color:rgb(176, 25, 93); /*first bug: how to make the color actually change.*/
+    display: inline;
+    justify-self: start;
+    color: rgb(229, 98, 157);
+    font-size: 1rem;
+    background-color: pink;
+    border: none;
+    border-radius: 30px;
+}
+
+#highScore:hover {
+    color: white;
+    background-color: rgb(246, 126, 180);
+    border-radius: 30px;
 }
