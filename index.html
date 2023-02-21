@@ -1,82 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <!-- <link rel="stylesheet" href="/assets/css/reset.css"></link> file not found??? -->
-   <link rel="stylesheet" href="assets/css/style.css"></link>
-    
+    <!-- <link rel="stylesheet" href="/assets/css/reset.css"></link> file not found??? -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    </link>
+
 
     <title>Quick Code Quiz</title>
 </head>
-<body>  
-    <div id="highScore">View High Scores</div>
+
+<body>
+    <button type="button" id="highScore">View High Scores</button>
+    <!--Add two versions like in the gif example, one when hidden (just 'view high scores', and one that pops up over the last question and stores and shows high scores)-->
+    <div style="visibility:hidden;" id="scoreBoard" ><!--style attribute has to go first or it will say null in console when you call the style attribute in javascript-->
+        <h3>Save your score:</h3>
+        <form method="POST">
+            <div class="input-group">
+                <label for="Username"> Username</label>
+                <input type="text" name="Username" id="Userinput" placeholder="Your Name" />
+            </div>
+            <!-- <div class="input-group">
+                <label for="score"></label>
+                <input type="password" name="password" id="password" placeholder="supersecure123" />
+            </div> -->
+            <div id="msg"></div>
+            <button id="confirmName">All Set!</button>
+        </form>
+    </div>
+    <div style="visibility:hidden;" class="card">
+        <h2>High Scores:</h2>
+        <p><strong>1.</strong> <span  id="scorePage"></span></p>
+        <!-- <p><strong>Password:</strong> <span id="user-password"></span></p> -->
+      </div>
     <h3 class="timer"></h3>
-    <section class="prompts">
-    <div class="question" class="instructions">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Press 'Start Quiz' to test your coding knowledge!
-        You will have 75 seconds to complete the quiz and each wrong answer deducts 10 seconds.
-    Best of luck!</p>
-    <button type="button" class="quizbtn">Let's Get Started!</button>
-    </div>
-     <!-- <div class="question" class="one">
-        <h2>Question 1</h2>
-        <p>question text</p>
-        <ul>
-            <li class="correct">option a</li>
-            <li class="incorrect">option b</li>
-            <li class="incorrect">option c</li>
-            <li class="incorrect">option d</li>
-        </ul>
-    </div>
-    <div class="question" class="two">
-        <h2>Question 2</h2>
-        <p>question text</p>
-        <ul>
-            <li class="correct">option a</li>
-            <li class="incorrect">option b</li>
-            <li class="incorrect">option c</li>
-            <li class="incorrect">option d</li>
-        </ul>
-    </div>
-    <div class="question" class="three">
-        <h2>Question 3</h2>
-        <p>question text</p>
-        <ul>
-            <li class="correct">option a</li>
-            <li class="incorrect">option b</li>
-            <li class="incorrect">option c</li>
-            <li class="incorrect">option d</li>
-        </ul>
-    </div>
-    <div class="question" class="four">
-        <h2>Question 4</h2>
-        <p>question text</p>
-        <ul>
-            <li class="correct">option a</li>
-            <li class="incorrect">option b</li>
-            <li class="incorrect">option c</li>
-            <li class="incorrect">option d</li>
-        </ul>
-    </div>
-    <div class="question" class="five">
-        <h2>Question 5</h2>
-        <p>question text</p>
-        <ul>
-            <li class="correct">option a</li>
-            <li class="incorrect">option b</li>
-            <li class="incorrect">option c</li>
-            <li class="incorrect">option d</li>
-        </ul>
-    </div>  -->
-    </section>
-    <p class="score">Score: </p>
-<!--Try adding the homepage text and one question and see if you can get them to show one at a time. We can
+    <section style="visibility:visible;" class="prompts"><!--putting the style on the instructions class made the EL break but here is OK!-->
+        <div class="questionStyle" class="instructions">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Press 'Start Quiz' to test your coding knowledge!
+                You will have 75 seconds to complete the quiz and each wrong answer deducts 10 seconds.
+                Best of luck!</p>
+            <button type="button" class="quizbtn">Let's Get Started!</button>
+        </div>
+        <div style="visibility:hidden;" class="questionStyle" id="q1">
+            <h3 id="title"></h3>
+            <ul>
+                <li class="alternative"></li>
+                <li class="alternative"></li>
+                <li class="alternative"></li>
+                <li class="alternative"></li>
+            </ul>
+            <p class="score"></p>
+        </div>
+        <!--reveals once the first 'index' button is pressed and a score is aquired-->
+        <!--Try adding the homepage text and one question and see if you can get them to show one at a time. We can
 do all questions this way. Like layering and they pop up on top of eachother, or are hidden when not active.
 To do this we can change the data-state(?) to hidden vs visible. 
 Another option is to use an array and show each 'item' one at a time, like in the image slideshow.-->
-    <script src="assets/script.js"></script>
+        <script src="assets/script.js"></script>
 </body>
+
 </html>
