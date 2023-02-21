@@ -7,39 +7,38 @@ let score = document.querySelector(".score");
 let scoreBoard = document.getElementById("scoreBoard");
 let q1 = document.getElementById("q1")//getElementById does not work with '#' because it is implied.
 score.textContent = 0;
+let finalScorePage = document.getElementById("scorePage");
+let scoreCard = document.querySelector(".card");
+let confirm = document.getElementById("confirmName");
+let msgDiv = document.getElementById("msg");
 
-quizbtn.addEventListener("click",startQuiz); //when adding an EventListener no parenthesis after the function.
+quizbtn.addEventListener("click", startQuiz); //when adding an EventListener no parenthesis after the function.
 
 function startQuiz() {//trigger this function with an event listener quizbtn.addEventListener("click", startQuiz)
- console.log("here");
- startTimer();
-    if (q1.style.visibility =='hidden') {  
-    q1.style.visibility = 'visible';
-     
- }
+    console.log("start quiz works!");
+    startTimer();
+    if (q1.style.visibility == 'hidden') {
+        q1.style.visibility = 'visible';
+
+    }
 }
 
 function startTimer() {
     let timerInterval = setInterval(function () {
         timeRemaining--;
         timer.textContent = "Seconds Remaining " + timeRemaining;
-        if (timeRemaining === 0) {
+        if (timeRemaining <= 0) {
             clearInterval(timerInterval);
         }
-        // if (!quizAnswer) {
-        //     timerCount = timerCount - 10000;
-        // }
-        // if (quizAnswer === true) {
-        //     timerCount = timerCount;
-        // }
-        // if (timercount === 0) {
-        //     clearInterval(timeInterval)
-        //     end.startQuiz;
-        //     displayMessage('You scored ' + score, ' points! Check highscores to see how you fared.');
-        // }
+                 inputLeaderboard();
     }, 1000);
 }
-
+        // if (!question.index == question.correctAnswer) {
+        //     timeRemaining = timeRemaining - 5;
+        // }
+        // if (question.index == question.correctAnswer) {
+        //     timeRemaining = timeRemaining;
+ 
 let question = {
     title: 'Question',
     alternatives: ['a', 'b', 'c', 'd'],
@@ -53,38 +52,59 @@ function showQuestion(q) {//the parameter 'q' is the question we will pass throu
     titleH3.textContent = q.title; //q.title replaces question.title
     let alts = document.querySelectorAll('.alternative')
     console.log(alts); //this is to see if the right elements have been selected.
-    alts.forEach(function(element,index){//the parameters are element and index
-element.textContent=q.alternatives[index];//element is q, textcontent is the alternatives index. Still dont understand how q is now read as question.
-   
-        element.addEventListener('click', function() {
+    alts.forEach(function (element, index) {//the parameters are element and index
+        element.textContent = q.alternatives[index];//element is q, textcontent is the alternatives index. Still dont understand how q is now read as question.
+
+        element.addEventListener('click', function () {
             //check correct answer
-            if(q.correctAnswer == index){
+            if (q.correctAnswer == index) {
                 console.log('correct Answer!');
                 // displayMessage('You got it!');
                 score.visibility = 'visible';
-                score = 'score: '+score.textContent++;
+                score = 'score: ' + score.textContent++;
             }
             else {
                 console.log('wrong answer!');
                 // displayMessage('Nope!');
-                score = 'score: '+score.textContent;
+                score = 'score: ' + score.textContent;
             }
         });
-});
+    });
 }
 
-showQuestion(question);//shows a list of the saved data for high scores
-function showLeaderboard() {
+showQuestion(question);
+
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+  }
+
+function inputLeaderboard() {//displays a screen for the user to input a username and save their highscore
     if (scoreBoard.style.visibility == 'hidden') {
         scoreBoard.style.visibility = 'visible';
         console.log('high scores here!');
     }
-    if (prompts.style.visibility == 'visible'){
+    if (prompts.style.visibility == 'visible') {
         prompts.style.visibility = 'hidden';
     }
-   
-} 
-    //triggers showLeaderboard function (above)
-leaderboard.addEventListener("click", showLeaderboard);
+}
+//i need to preventDefault somewhere. the page keeps refreshing when i submit the username in the inputLeaderboard function
+function showLeaderboard() {//shows saved data
+    let email = localStorage.getItem("username");
+
+    if (email == "");
+    displayMessage("A username must contain text!");
+
+    if(scoreCard.style.visibility == 'hidden'){
+        scoreCard.style.visibility = 'visible';
+    }
+
+    scorePage.textContent= email;
+    console.log("showLeaderboard works");
+}
+
+//triggers inputLeaderboard function, then when the button is clicked, showLeaderboard function should fire
+leaderboard.addEventListener("click", inputLeaderboard);//no quotes after function when calling it in an event listener
+confirm.addEventListener("click",showLeaderboard);
 //event listener to target ID confirm name button
 //amend elemtents to have locally saved username and score
