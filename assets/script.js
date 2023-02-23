@@ -50,14 +50,17 @@ for (var i = 0; i < questions.length; i++) {
     optB.textContent = questions[i].choices[1];
     optC.textContent = questions[i].choices[2];
     optD.textContent = questions[i].choices[3];
-    if (this.target == questions[i].answer) {
-        score++;
-        alert("correct!");
-    } else {
-        alert("incorrect!");
+    //the choiceClick() function listens to the "choices" div for a button click inside it. This function adds or subtracts game time, dissappears the buttons after the question has been answered, updates the score, iterates the currentQuestionIndex and then calls getQuestions() to put the next question on the screen. It does this until currentQuestionIndex === questions.length
+    function choiceClick() {
+        if (this.target == questions[i].answer) {
+            score++;
+            alert("correct!");
+        } else {
+            alert("incorrect!");
+        }
     }
+    alert("you got " + score + "/")//this is from a youtube video. will likely be deleted I am thinking
 }
-alert("you got " + score + "/")//this is from a youtube video. will likely be deleted I am thinking
 
 quizbtn.addEventListener("click", startQuiz); //when adding an EventListener no parenthesis after the function.
 
@@ -88,13 +91,11 @@ function getQuestions() {// get the choices array from the question at the curre
 
 }
 
-//the choiceClick() function listens to the "choices" div for a button click inside it. This function adds or subtracts game time, dissappears the buttons after the question has been answered, updates the score, iterates the currentQuestionIndex and then calls getQuestions() to put the next question on the screen. It does this until currentQuestionIndex === questions.length
-//you'll also need an endQuiz() function that resets the pages contents and resets your currentQuestionIndex 
 
 function endQuiz() {
     //reset page and currentQuestionIndex
     window.location.reload();
-    currentQuestionIndex=0;
+    currentQuestionIndex = 0;
 }
 
 function startTimer() {
@@ -108,37 +109,6 @@ function startTimer() {
 
     }, 1000);
 }
-
-// function showQuestion(q) {//the parameter 'q' is the question we will pass through the function
-//     //select dom element in a variable
-//     let titleH3 = document.getElementById('title');
-//     //modify it
-//     titleH3.textContent = q.title; //q.title replaces question.title
-//     let alts = document.querySelectorAll('.alternative')
-//     console.log(alts); //this is to see if the right elements have been selected.
-//     alts.forEach(function (element, index) {//the parameters are element and index
-//         element.textContent = q.alternatives[index];//element is q, textcontent is the alternatives index. Still dont understand how q is now read as question.
-
-//         element.addEventListener('click', function () {
-//             //check correct answer
-//             if (q.correctAnswer == index) {
-//                 console.log('correct Answer!');
-//                 displayMessage('You got it!');
-//                 score.visibility = 'visible';
-//                 score = 'score: ', score.textContent++;
-//             }
-//             else {
-//                 console.log('wrong answer!');
-//                 displayMessage('Nope!');
-//                 score = 'score: ', score.textContent;
-//                 timeRemaining = timeRemaining - 5;
-//             }
-//         });
-//     });
-//     showQuestion(q2);
-// }
-//trying to append elements
-// showQuestion(question);
 
 function displayMessage(type, message) {
     msgDiv.textContent = message;
@@ -166,7 +136,7 @@ function showLeaderboard() {//shows saved data *allegedly*
         scoreCard.style.visibility = 'visible';
     }
 
-    scorePage.textContent = email;
+    scorePage.textContent = name;
     console.log("showLeaderboard works");
 }
 
