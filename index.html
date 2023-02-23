@@ -16,6 +16,7 @@
 <body>
     <button type="button" id="highScore">View High Scores</button>
     <!--Add two versions like in the gif example, one when hidden (just 'view high scores', and one that pops up over the last question and stores and shows high scores)-->
+    <div id="msg"></div>
     <div style="visibility:hidden;" id="scoreBoard" ><!--style attribute has to go first or it will say null in console when you call the style attribute in javascript-->
         <h3>Save your score:</h3>
         <form method="POST">
@@ -23,11 +24,7 @@
                 <label for="Username"> Username</label>
                 <input type="text" name="Username" id="Userinput" placeholder="Your Name" />
             </div>
-            <!-- <div class="input-group">
-                <label for="score"></label>
-                <input type="password" name="password" id="password" placeholder="supersecure123" />
-            </div> -->
-            <div id="msg"></div>
+            
             <button id="confirmName">All Set!</button>
         </form>
     </div>
@@ -45,14 +42,8 @@
                 Best of luck!</p>
             <button type="button" class="quizbtn">Let's Get Started!</button>
         </div>
-        <div style="visibility:hidden;" class="questionStyle" id="q1">
-            <h3 id="title"></h3>
-            <ul>
-                <li class="alternative"></li>
-                <li class="alternative"></li>
-                <li class="alternative"></li>
-                <li class="alternative"></li>
-            </ul>
+        <div style="visibility:hidden;" class="questionStyle" id="choices">
+          
             <p class="score"></p>
         </div>
         <!--reveals once the first 'index' button is pressed and a score is aquired-->
