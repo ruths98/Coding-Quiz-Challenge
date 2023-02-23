@@ -115,7 +115,8 @@ function displayMessage(type, message) {
     msgDiv.setAttribute("class", type);
 }
 
-function inputUsername(event) {//displays a screen for the user to input a username and save their highscore
+function inputUsername(event) {//displays a screen for the user to input a username and save their highscore  
+    window.localStorage.setItem("username","")
     if (scoreBoard.style.visibility == 'hidden') {
         scoreBoard.style.visibility = 'visible';
         console.log('high scores here!');
@@ -123,11 +124,13 @@ function inputUsername(event) {//displays a screen for the user to input a usern
     if (prompts.style.visibility == 'visible') {
         prompts.style.visibility = 'hidden';
     }
-    event.preventDefault;
+  
+    console.log(localStorage.getItem("username"));
 }
 //i need to preventDefault somewhere. the page keeps refreshing when i submit the username in the inputLeaderboard function
 function showLeaderboard() {//shows saved data *allegedly*
     let name = localStorage.getItem("username");
+    score="score "+score.textContent;
 
     if (name == "");
     displayMessage("A username must contain text!");
@@ -141,7 +144,7 @@ function showLeaderboard() {//shows saved data *allegedly*
 }
 
 //triggers inputLeaderboard function, then when the button is clicked, showLeaderboard function should fire
-leaderboard.addEventListener("click", showLeaderboard);//no quotes after function when calling it in an event listener
-confirm.addEventListener("click", showLeaderboard);//How to prevent Default?
+leaderboard.addEventListener("click", inputUsername);//no quotes after function when calling it in an event listener
+confirm.addEventListener("click", showLeaderboard).preventDefault;//How to prevent Default?
 //event listener to target ID confirm name button
-//amend elemtents to have locally saved username and score
+//amend elements to have locally saved username and score
